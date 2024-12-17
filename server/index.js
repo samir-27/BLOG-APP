@@ -1,8 +1,22 @@
 import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import DBconnect from './db.js'
+
+dotenv.config({ path: "../.env" });
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT;
 
-app.listen(3000, () => {
-  console.log(`server is running on ${PORT}`);
+// Middleware
+app.use(cors());
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+
+DBconnect();
+
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
 });
