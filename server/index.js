@@ -21,6 +21,16 @@ DBconnect();
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/auth', authRoutes);
 
+app.use((err, req, res, next)=>{
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'internal server error';
+  res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
