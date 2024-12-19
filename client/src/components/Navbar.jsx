@@ -1,13 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignin =()=>{
+    navigate('/Signin')
+  }
 
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
+    <nav className="bg-white shadow-lg z-50">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center h-8vh">
         <div className="text-2xl font-bold text-indigo-500">
           <Link to="/">Brand</Link>
         </div>
@@ -38,8 +42,8 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <button className="px-4 py-2 text-white bg-indigo-500 rounded-md shadow hover:bg-indigo-600">
-            Login
+          <button onClick={handleSignin} className="px-4 py-2 text-white bg-indigo-500 rounded-md shadow hover:bg-indigo-600">
+            Sign In
           </button>
         </div>
 
@@ -93,7 +97,7 @@ const Navbar = () => {
             Contact
           </Link>
           <button className="w-full py-2 mt-2 text-white bg-indigo-500 rounded-md shadow hover:bg-indigo-600">
-            Login
+            Sign in
           </button>
         </div>
       )}
