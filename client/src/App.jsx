@@ -6,11 +6,13 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
+import { ToastContainer } from "react-toastify";
 
 
 const App = () => {
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
